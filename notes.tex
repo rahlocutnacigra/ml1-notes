@@ -15,7 +15,13 @@
 \usepackage{palatino} 
 \usepackage{pxfonts}
 \usepackage{charter}
-\usepackage{algorithmic} % for algorithms
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\makeatletter
+% Reinsert missing \algbackskip
+\def\algbackskip{\hskip-\ALG@thistlm}
+\makeatother
 
 \usepackage{amsopn}
 \DeclareMathOperator*{\argmax}{\arg\,\max}
@@ -30,6 +36,8 @@
 \newcommand{\Var}{\mathrm{Var}}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\vect}[1]{\boldsymbol{#1}}
+\DeclareTextFontCommand{\emph}{\em}
+
 
 \newcommand{\chaptersummary}[1]{ {\em #1}}
 
@@ -188,6 +196,7 @@ backgroundcolor=\color{light-gray}
 \maketitle
 \tableofcontents
 
-\include{introduction}
+% \include{introduction}
+\include{trees-and-forests}
 
 \end{document}
