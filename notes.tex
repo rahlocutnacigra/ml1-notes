@@ -1,3 +1,5 @@
+% pcregrep --color='auto' -n '[^\x00-\x7F]' notes.bib
+
 % \documentclass{tufte-book}
 \documentclass[a4paper,11pt]{book}
 \usepackage{a4wide}
@@ -183,13 +185,17 @@ backgroundcolor=\color{light-gray}
 % include hyperlinks
 \usepackage{hyperref}
 
-\usepackage[backend=biber]{biblatex}
+\usepackage[
+backend=biber,
+style=numeric-comp,
+citestyle=numeric-comp
+]{biblatex}
 \addbibresource{notes.bib}
 
 
 \title{Machine Learning for Data Science 1 \\
 \small (lecture notes, only for internal use)}
-\author{Blaž Zupan, Erik Štrumbelj}
+\author{Bla\v{z} Zupan, Erik \v{S}trumbelj}
 \date{\today}
 
 

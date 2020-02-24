@@ -1,7 +1,8 @@
+\begin{refsection}
 \chapter{Trees and Forests}
 
 \begin{summary}
-We here introduce learning via recursive partitioning of the input variable space. Depending on the learning taks, the algorithm used is classification trees or regression trees, respectively. We then describe the upgrade of the tree-learning approach with construction of a set of trees, random forests, and, as part of the latter, we introduce a more general approach of bootstrap aggregation (bagging).
+Trees introduce learning via recursive partitioning of the input variable space. Depending on the learning task, the algorithm used is either a classification tree or a regression tree, respectively. The inference of trees is fast but leads to models that are not stable and have high variance. To reduce the variance and increase stability, the upgrade of the tree-learning approach may construct a set of trees. We define two such procedures; one called bootstrap aggregation (bagging) and the other random forest.
 \end{summary}
 
 \section{Classification and Regression Trees (CART)}
@@ -170,17 +171,11 @@ The outlier (this time it's a good point) is a high-leverage point. Bootstrappin
 
 \section{Random Forests}
 
-\end{document}
-
 * Basic idea: extend the idea of bagging to input variables as well: sampling input variables every step results in more decorrelated trees, but the variance of trees is still big, because we build them almost completely and we don't prune. Hence, they are ideal for bagging.
 * Define the algorithm: ESL:Ch15.1 is good enough.
 * Mention advantages: can be used for numeric and categorical target variable; elegant way of estimating generalization error (out-of-bag) and feature importance; very easy to tune
 * Disadvantages: lose the interpretability of trees.
 
-## Readings
 
-
-* ESL:Ch09.2 (trees)
-* Murphy:Ch16.2 (trees)
-* ESL:Ch08.7 (bagging)
-* ESL:Ch15.1 (random forests)
+\printbibliography[heading=subbibliography]
+\end{refsection}
