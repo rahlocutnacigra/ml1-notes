@@ -6,7 +6,7 @@ Machine learning is a set of approaches that can detect patterns in the data. Ty
 \end{summary}
 
 \ifguide{
-The purpose of this chapter is to introduce students to the basic definitions, general types of machine learning problems, things to consider in practical applications and fundamental concepts (curse of dimensionality, no-free-lunch thm.). We can also introduce kNN. Together with linear and logistic regression and PCA, which they already know, we have enough variety to cover the illustrative examples we need for this chapter.
+The purpose of this chapter is to introduce students to the basic definitions, general types of machine learning problems, things to consider in practical applications and fundamental concepts (curse of dimensionality, no-free-lunch theorem). We can also introduce kNN. Together with linear and logistic regression and PCA, which they already know, we have enough variety to cover the illustrative examples we need for this chapter.
 
 Keep in mind that the Intro to DS course will already provide students with a practitioner's (black-box) understanding of the application of predictive models (classification/regression), clustering and dimensionality reduction, and dealing with missing values. This includes a black-box understanding of train/test and k-fold CV estimation of generalization error. Principles of Uncertainty will also give them a fundamental understanding of bootstrap non-parametric inference, maximum likelihood inference, Bayesian inference, and classical hypothesis testing. And a fundamental understanding of the following models: linear regression, logistic regression, PCA.
 }
@@ -198,7 +198,7 @@ In practical applications, there are other dimensions (other than predictive acc
 
 Every modeling paradigm we introduce in this course should and will be discussed from these perspectives. Notice that most data science courses often focus on predictive accuracy alone; the intended audience may often forget that in practice, other issues are equally or even more important.
 
-\subsection{Curse of Dimensionality}
+\subsection*{Curse of Dimensionality}
 
 In practice, the complexity of the models we want to fit is not bound only by computational resources but also the fact that a linear increase in the number of variables can result in exponential increases in the number of possible configurations. Therefore, the amount of data that would be required to distinguish between these configurations is impractical. 
 
