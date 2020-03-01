@@ -2,7 +2,8 @@ import os
 
 chapters = (
     ("introduction", 5),
-    ("END", 17)
+    ("trees-and-forests", 17),
+    ("END", 29)
 )
 
 
