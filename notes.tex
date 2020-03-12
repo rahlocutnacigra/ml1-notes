@@ -1,9 +1,9 @@
 % pcregrep --color='auto' -n '[^\x00-\x7F]' notes.bib
+% biber notes
 
 % \documentclass{tufte-book}
 \documentclass[a4paper,11pt]{book}
 \usepackage{a4wide}
-% \usepackage[utf8x]{inputenc}
 \usepackage[unicode]{hyperref}
 \usepackage[pdftex]{graphicx} % za slike
 \usepackage{setspace}
@@ -11,12 +11,13 @@
 \usepackage[version=3]{mhchem}
 \usepackage{booktabs} % makes nice quality tables
 \usepackage{emptypage}
-
-
-% \usepackage{mathptmx}
 \usepackage{palatino} 
 \usepackage{pxfonts}
 \usepackage{charter}
+
+% \usepackage{natbib}
+% \bibliographystyle{abbrvnat}
+% \setcitestyle{authoryear,open={((},close={))}}
 
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
@@ -38,8 +39,19 @@
 \newcommand{\Var}{\mathrm{Var}}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\matr}[1]{\boldsymbol{#1}}
 \DeclareTextFontCommand{\emph}{\em}
+\usepackage{xspace}
+\def\etal{{\em et al.}\xspace}
+\def\eg{{\em e.g.}\xspace}
+\def\ie{{\em i.e.}\xspace}
+\def\y{\vect{y}}
+\def\b{\vect{\beta}}
+\def\x{\vect{x}}
+\def\X{\matr{X}}
+\def\I{\matr{I}}
 
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 \newcommand{\chaptersummary}[1]{ {\em #1}}
 
@@ -185,10 +197,12 @@ backgroundcolor=\color{light-gray}
 % include hyperlinks
 \usepackage{hyperref}
 
+
+% \usepackage[authordate,bibencoding=auto,strict,backend=biber,natbib]{biblatex-chicago}
+
 \usepackage[
-backend=biber,
-style=numeric-comp,
-citestyle=numeric-comp
+    backend=biber, natbib,
+    style=authoryear,
 ]{biblatex}
 \addbibresource{notes.bib}
 
@@ -206,5 +220,6 @@ citestyle=numeric-comp
 
 \include{introduction}
 \include{trees-and-forests}
+\include{feature-selection}
 
 \end{document}
