@@ -55,7 +55,7 @@ $$
 $$
 where ${\rm nearHit}(x_i)$ is the closest same-class data instance to $x_i$, and ${\rm nearMiss}(x_i)$ is the closest different-class data instance to $x_i$. Notice that the weight of any given feature decreases if it differs from that feature in nearby instances of the same class more than nearby instances of the other class, and increases in the reverse case. In a local neighborhood, the best features should distinguish between instances of the different classes and should be similar across instances of the same class. The score $\vect{w}$ is updated for $m$ random draws, and the features with the highest scores are those that should be selected. 
 
-Several extensions and improvements of Relief were proposed by~\citep{Kononenko1997}. On the surface, Relief looks like a perfect feature scoring algorithm that can indeed cope with any hidden feature interactions. However, it relies on finding similar data instances and thus suffers from the same problem as any nearest neighbors approach. In other words, Relief would start failing in data sets with a higher number of features, which is precisely where feature interaction discovery would be of the highest value.
+\citet{Kononenko1997} proposed several extensions and improvements of Relief. On the surface, Relief looks like a perfect feature scoring algorithm that can indeed cope with any hidden feature interactions. However, it relies on finding similar data instances and thus suffers from the same problem as any nearest neighbors approach. In other words, Relief would start failing in data sets with a higher number of features, which is precisely where feature interaction discovery would be of the highest value.
 
 \subsection*{Wrapper Methods}
 
@@ -111,7 +111,7 @@ so that
 $$\b_{\rm OLS} = \argmin_{\b} \sum_{i=1}^n (\y_i - \b^T\x_i)^2.$$
 Notice that this criteria function actually stems from the maximum likelihood estimation, where parameters $\b$ are estimated by maximizing a likelihood function, so that under the assumed statistical model the observed data is most probable.
 
-Linear regression also has a closed form solution~\cite{ESL}. Let $\X$ denote $n\times (1+p)$ matrix with $n$ training data instances described with $p$ features. The first column of the matrix is a unit vector. Residual sum of squares can then be expressed as:
+Linear regression also has a closed form solution \citep{ESL}. Let $\X$ denote $n\times (1+p)$ matrix with $n$ training data instances described with $p$ features. The first column of the matrix is a unit vector. Residual sum of squares can then be expressed as:
 $$
 {\rm RSS}(\b) = (\y-\X\b)^\tr (\y-\X\b)
 $$
@@ -232,7 +232,7 @@ Similarly we can find the analogue to L1 regularization - the absolute penalty i
 
 Note that the Bayesian approach to regularization lends itself to an alternative way of inferring $\lambda$. Instead of using a fixed $\lambda$ or choosing the best $\lambda$ via CV or similar procedure, we can instead treat $\lambda$ as a parameter, put a hyper-prior on it, and infer it simultaneously with the coefficients.
 
-Also, note that regularization (adding a penalty term to the likelihood) is in statistical circles more often referred to as \textbf{penalized likelihood}.
+Also, note that regularization (adding a penalty term to the likelihood) is in statistical circles more often referred to as {\em penalized likelihood}.
 
 \subsection*{Final Remarks}
 
