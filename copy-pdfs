@@ -1,0 +1,1 @@
+scp pdfs/*.pdf file:~/anonymous/textbooks/ml1

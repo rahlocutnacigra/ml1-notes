@@ -6,3 +6,4 @@
 *.log
 *.toc
 *.out
+pdfs/*

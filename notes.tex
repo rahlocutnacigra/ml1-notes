@@ -1,7 +1,6 @@
 % pcregrep --color='auto' -n '[^\x00-\x7F]' notes.bib
 % biber notes
 
-% \documentclass{tufte-book}
 \documentclass[a4paper,11pt]{book}
 \usepackage{a4wide}
 \usepackage[unicode]{hyperref}
@@ -11,7 +10,6 @@
 \usepackage[version=3]{mhchem}
 \usepackage{booktabs} % makes nice quality tables
 \usepackage{emptypage}
-\usepackage{palatino} 
 \usepackage{pxfonts}
 \usepackage{charter}
 
@@ -50,6 +48,9 @@
 \def\x{\vect{x}}
 \def\X{\matr{X}}
 \def\I{\matr{I}}
+\def\N{\mathcal{N}}
+\def\betas{\vect{\beta}}
+% \def\l{\mathcal{l}}
 
 \DeclareMathOperator*{\argmin}{arg\,min}
 
@@ -221,6 +222,7 @@ backgroundcolor=\color{light-gray}
 
 \include{introduction}
 \include{trees-and-forests}
+\include{lin-log}
 \include{glm}
 \include{feature-selection}
 \include{kernels}

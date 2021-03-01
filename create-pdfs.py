@@ -3,10 +3,11 @@ import os
 chapters = (
     ("introduction", 5),
     ("trees-and-forests", 17),
-    ("glm", 31),
-    ("feature-selection", 33),
-    ("kernels", 45),
-    ("END", 65)
+    ("linlog", 31),
+    ("glm", 41),
+    ("feature-selection", 43),
+    ("kernels", 55),
+    ("END", 74)
 )
 
 
