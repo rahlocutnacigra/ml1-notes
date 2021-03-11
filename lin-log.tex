@@ -9,7 +9,7 @@ We start the chapter with a probabilistic view of linear regression. We first ex
 
 Maximum likelihood estimation involves treating the problem as an optimization or search problem. We seek parameters that result in the best fit for the joint probability of the data sample. For a start, consider that we are given a regression (training) data set with pairs of values for dependent and vectors for independent variables, $\{(y_1,\x_1), \ldots, (y_N,\x_N)\}$. The target variable is continuous, and its estimate is given by
 \begin{equation}
-\hat y(\x)=f_{\betas}(\x)=\beta_0+\sum_{m=1}M\beta_m\x_m.
+\hat y(\x)=f_{\betas}(\x)=\beta_0+\sum_{m=1}^M\beta_m\x_m.
 \end{equation}
 We assume that the target variable $y$ is given by a deterministic function $y(\x,\vect{\beta})$ with additive Gaussian noise, so that
 \begin{equation}
@@ -25,7 +25,7 @@ p(e)={1\over\sigma\sqrt{2\pi}}\exp\left({-{e^2\over 2\sigma^2}}\right)
 \end{equation}
 We are now ready to assign the probability for the estimated value of the target variable for the $i$-th data instances in the training data set:
 \begin{equation}
-p(y_i|\x_i,\vect{\beta}) = {1\over\sigma\sqrt{2\pi}}\exp\left({-{\left(y_i-\hat{y}(\x)\right)^2\over 2\sigma^2}}\right)
+p(y_i|\x_i,\vect{\beta}) = {1\over\sigma\sqrt{2\pi}}\exp\left({-{\left(y_i-\hat{y}(\x_i)\right)^2\over 2\sigma^2}}\right)
 \end{equation}
 We can now compute the probability of observing the training data by our model, which we exclusively define through a set of parameters $\vect{\beta}$. We will assume that the data instances in the training data set are independent. We denote this probability with $L(\vect{beta})$, and write
 \begin{align}
@@ -58,7 +58,7 @@ $\betas=\vec{0}$. Our goal is to find $\betas$ that minimize the criteria functi
 %
 where $\alpha$ is a learning rate whose value will determine the speed to which we proceed to the optimal value of the parameters. If $\alpha$ is too large, there is a chance the procedure will miss optimal point and get out of bounds. When $\alpha$ is too small, the convergence is slow.
 
-Let us now compute the partial derivate of our criteria function for $\betas_i$. Notice that these partial derivatives form a vactor, or the gradient of the criteria function. For now, we will compute the gradient taking into account only one data instance from the training set, $(y, \x)$. 
+Let us now compute the partial derivate of our criteria function for $\betas_i$. Notice that these partial derivatives form a vector, or the gradient of the criteria function. For now, we will compute the gradient taking into account only one data instance from the training set, $(y, \x)$. 
 %
 \begin{align}
 {\partial\over\partial\betas_i} J(\betas) & = 
@@ -74,7 +74,7 @@ Iterative correction of $\betas_i$ will be therefore
 \end{equation}
 and considering all the data instances in the training set
 \begin{equation}
-  \betas_i\leftarrow\betas_i-{\alpha\over m}\sum_{j=1}M(f_{\betas}(\x_j)-y_j)x_{ji}
+  \betas_i\leftarrow\betas_i-{\alpha\over m}\sum_{j=1}^M(f_{\betas}(\x_j)-y_j)x_{ji}
 \end{equation}
 
 In the linear regression or least squares approach described above, the criteria function $J(\betas)$ is a quadratic function with a single minimum, so we do not need to fear that the optimization would stop at some local minimum. However, as we have already written above, at large values of $\alpha$ the gradient descent may overshoot and miss the minimum and start moving further and further away from it. It helps, of course, to reduce $\alpha$ to a value at which the optimization is stable and converges to optimal value of parameters $\betas$.
@@ -86,7 +86,7 @@ Let us rewrite the criteria function $J(\betas)$ for linear regression in a matr
 J(\betas) & = \sum_{i=1}^N\left(y_i-\hat{y}(\x_i)\right)^2 \\
 & = (\y-\X\betas)^\tr (\y-X\betas)
 \end{align}
-We are looking for the parameters $\betas$ which minimize the value of the criteria function, that is, tha value of the parameters where the gradient is $\vect{0}$. Let us first compute the gradient:
+We are looking for the parameters $\betas$ which minimize the value of the criteria function, that is, the value of the parameters where the gradient is $\vect{0}$. Let us first compute the gradient:
 \begin{equation}
 {\partial J(\betas) \over\partial\betas} = -2 \X^\tr(\y-\X\betas).
 \end{equation}
@@ -170,7 +170,7 @@ The logistic function (Fig.~\ref{f:logistic-function}) is continuous, monotonic;
 Following is an equation for a logistic regression model. In the core, this is a linear model, that is, a weighted sum of the values of the input variables. 
 
 \begin{eqnarray}
-  f_{\betas}(x) & = & g(\betas_0+\betas_1 x_1+\betas_2 x_2+\ldots\betas_M x_M)
+  f_{\betas}(x) & = & g(\betas_0+\betas_1 x_1+\betas_2 x_2+\ldots + \betas_M x_M)
   \nonumber \\
   & = & g(\betas^\tr \x) \nonumber \\
   & = & \frac{1}{1+e^{-\betas^\tr \x}}
@@ -179,7 +179,7 @@ Following is an equation for a logistic regression model. In the core, this is a
 
 Notice that the linear combination of $\betas$ and values of input variables, when equated to $0$, defines the hyperplane in the feature space. Notice also the all the points that lie on the plane have a value of this function of $0$. The value $0$ is transformed by logistic function to $0.5$. For any other data point that does not lie on the hyperpane the logistic function transforms this value to the value in the interval of $(0.5, 1.0]$ for the points on one side of the hyperplane, or the the value between $(0, 0.5]$ for the points on the other, negative side of the hyperplane. Conveniently, the farther away the point is from the hyperplane, the more to the extremes (0 or 1) will be its value of logistic regression. The hyperplane defined within logistic regression model can thus serve as a decision boundary between two classes.
 
-In what follows, we will use the logistic function so that our model $f_{\betas}(\x)$ returns values between 0 and 1. We will continue to assume that our class variable is two-valued, but assume that its target value is a class marked with $y=1$ and that for it the model $f_{\betas} (\x)$ returns the probability of this class. Notice that the parapeters $\betas$ fully define logistic regression model. Thus, we can write:
+In what follows, we will use the logistic function so that our model $f_{\betas}(\x)$ returns values between 0 and 1. We will continue to assume that our class variable is two-valued, but assume that its target value is a class marked with $y=1$ and that for it the model $f_{\betas} (\x)$ returns the probability of this class. Notice that the parameters $\betas$ fully define logistic regression model. Thus, we can write:
 \begin{eqnarray}
   p(y=1|\x;\betas) & = & f_{\betas}(x) \\
   p(y=0|\x;\betas) & = & 1-f_{\betas}(x)
@@ -195,14 +195,14 @@ The expression for $p(y|\x;\betas) $ in the above equation therefore gives the p
 Let us now freeze the parameters of the model and compute the joint probability $L(\betas)$, the likelihood, for all the instances in the training set. We assume that the examples from the training set are independent and therefore the probability, with which we observe the values of the classes of particular data instanes described with the vectors $\x$ can be written as the product of the probabilities of individual data instances:
 \begin{eqnarray}
   L(\betas) & = & p(\y|\X;\betas) \nonumber\\
-  & = & \prod_{i=1}M p(y_i|x_i;\betas) \nonumber\\
-  & = & \prod_{i=1}M f_{\betas}(x_i)^{y_i}(1-f_{\betas}(x_i))^{1-y_i}
+  & = & \prod_{i=1}^M p(y_i|x_i;\betas) \nonumber\\
+  & = & \prod_{i=1}^M f_{\betas}(x_i)^{y_i}(1-f_{\betas}(x_i))^{1-y_i}
 \end{eqnarray}
 
 Again, just like with the linear regression, we would like to infer the model that maximizes the likelihood. That is, the parameters where we maximize the probability with which the model observes the training set. For convenience of deriving the $\betas$ which maximize the likelihood, we compute its logarithm, and then maximize the log-likelihood:
 \begin{eqnarray}
   \ell(\betas) & = & \log L(\betas) \nonumber\\
-  & = & \sum_{i=1}M\big[y_i\log f_{\betas}(x_i)+(1-y_i)\log (1-f_{\betas}(x_i)) \big]
+  & = & \sum_{i=1}^M\big[y_i\log f_{\betas}(x_i)+(1-y_i)\log (1-f_{\betas}(x_i)) \big]
 \end{eqnarray}
 
 \section{Gradient Descent for Logistic Regression}
